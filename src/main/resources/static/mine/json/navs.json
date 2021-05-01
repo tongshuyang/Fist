@@ -1,0 +1,190 @@
+{
+	"super" : [
+		{
+			"title": "用户管理",
+			"icon": "&#xe612;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "用户列表",
+					"icon": "&#xe770;",
+					"href": "/user/rms/user_manage",
+					"spread": false
+				},
+				{
+					"title": "用户评论",
+					"icon": "&#xe63a;",
+					"href": "/comment/rms/comment_manage",
+					"spread": false
+				},
+				{
+					"title": "系统通知",
+					"icon": "&#xe667;",
+					"href": "/notice/rms/notice_manage",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "网站内容",
+			"icon": "&#xe632;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "首页广告",
+					"icon": "&#xe64a;",
+					"href": "/ad/rms/ad_manage",
+					"spread": false
+				},
+				{
+					"title": "网站动态",
+					"icon": "&#xe609;",
+					"href": "/moving/rms/moving_manage",
+					"spread": false
+				},
+				{
+					"title": "网站留言",
+					"icon": "&#xe63c;",
+					"href": "/leave_word/rms/leave_word_manage",
+					"spread": false
+				},
+				{
+					"title": "服务管理",
+					"icon": "&#xe857;",
+					"href": "/service/rms/service_manage",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "系统设置",
+			"icon": "&#xe614;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "Manager",
+					"icon": "&#xe635;",
+					"href": "/admin_user/rms/admin_user_manage",
+					"spread": false
+				},
+				{
+					"title": "参数配置",
+					"icon": "&#xe631;",
+					"href": "/conf/rms/conf_manage",
+					"spread": false
+				},
+				{
+					"title": "登录日志",
+					"icon": "icon-log",
+					"href": "/log/rms/log_manage",
+					"spread": false
+				},
+				{
+					"title": "友情链接",
+					"icon": "&#xe64c;",
+					"href": "/friend_link/rms/link_manage",
+					"spread": false
+				},
+				{
+					"title": "访问量统计",
+					"icon": "&#xe60e;",
+					"href": "/visits/rms/visits_manage",
+					"spread": false
+				}
+			]
+		}
+	],
+	"admin" : [
+		{
+			"title": "用户管理",
+			"icon": "&#xe612;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "用户列表",
+					"icon": "&#xe770;",
+					"href": "/user/rms/user_manage",
+					"spread": false
+				},
+				{
+					"title": "用户评论",
+					"icon": "&#xe63a;",
+					"href": "/comment/rms/comment_manage",
+					"spread": false
+				},
+				{
+					"title": "系统通知",
+					"icon": "&#xe667;",
+					"href": "/notice/rms/notice_manage",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "网站内容",
+			"icon": "&#xe632;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "首页广告",
+					"icon": "&#xe64a;",
+					"href": "/ad/rms/ad_manage",
+					"spread": false
+				},
+				{
+					"title": "网站动态",
+					"icon": "&#xe609;",
+					"href": "/moving/rms/moving_manage",
+					"spread": false
+				},
+				{
+					"title": "网站留言",
+					"icon": "&#xe63c;",
+					"href": "/leave_word/rms/leave_word_manage",
+					"spread": false
+				},
+				{
+					"title": "服务管理",
+					"icon": "&#xe857;",
+					"href": "/service/rms/service_manage",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "系统设置",
+			"icon": "&#xe614;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "登录日志",
+					"icon": "icon-log",
+					"href": "/log/rms/log_manage",
+					"spread": false
+				},
+				{
+					"title": "友情链接",
+					"icon": "&#xe64c;",
+					"href": "/friend_link/rms/link_manage",
+					"spread": false
+				},
+				{
+					"title": "访问量统计",
+					"icon": "&#xe60e;",
+					"href": "/visits/rms/visits_manage",
+					"spread": false
+				}
+			]
+		}
+	]
+}
+
+
+
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.litman.fist.mapper.WebConfigMapper">
+  <resultMap id="BaseResultMap" type="cn.litman.fist.entity.WebConfig">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <insert id="insertSelective" parameterType="cn.litman.fist.entity.WebConfig">
+    insert into web_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        key,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--修改网站配置-->
+  <update id="updateWebConfig">
+    UPDATE web_config
+    SET
+    <trim suffixOverrides=",">
+      <if test="value != null and value != ''">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--查询网站配置列表-->
+  <select id="listWebConfig" resultMap="BaseResultMap">
+    SELECT * FROM web_config
+    WHERE 1=1
+    <if test="remark != null and remark != ''">
+      AND remark LIKE CONCAT(CONCAT('%', #{remark,jdbcType=VARCHAR}), '%')
+    </if>
+  </select>
+</mapper>

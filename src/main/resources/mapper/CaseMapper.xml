@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.litman.fist.mapper.CaseMapper">
+  <resultMap id="BaseResultMap" type="cn.litman.fist.entity.Case">
+    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="c_id" jdbcType="INTEGER" property="cId" />
+    <result column="story_id" jdbcType="INTEGER" property="storyId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="error_code" jdbcType="VARCHAR" property="errorCode" />
+    <result column="category" jdbcType="TINYINT" property="category" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="product_type" jdbcType="TINYINT" property="productType" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="solution" jdbcType="VARCHAR" property="solution" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.litman.fist.entity.Case">
+    insert into case (case_id, u_id, c_id, 
+      story_id, title, description, 
+      error_code, category, status, 
+      product_type, follow_info, solution, 
+      create_time, update_time)
+    values (#{caseId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{cId,jdbcType=INTEGER}, 
+      #{storyId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{errorCode,jdbcType=VARCHAR}, #{category,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{productType,jdbcType=TINYINT}, #{followInfo,jdbcType=VARCHAR}, #{solution,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.litman.fist.entity.Case">
+    insert into case
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="caseId != null">
+        case_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="storyId != null">
+        story_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="errorCode != null">
+        error_code,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="followInfo != null">
+        follow_info,
+      </if>
+      <if test="solution != null">
+        solution,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="cId != null">
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="storyId != null">
+        #{storyId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null">
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=TINYINT},
+      </if>
+      <if test="followInfo != null">
+        #{followInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="solution != null">
+        #{solution,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

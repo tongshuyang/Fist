@@ -48,8 +48,9 @@ spring:
   # 静态资源路径
   mvc:
     static-path-pattern: /static/**
-  resources:
-    static-locations: classpath:/static/
+  web:
+    resources:
+      static-locations: classpath:/static/
 
 mybatis:
   #对应实体类的路径
