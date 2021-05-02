@@ -36,7 +36,7 @@ public class User {
     private String name;
 
     /**
-     * 角色, 0：admin 1：user
+     * 角色 0：user 1：admin
      */
     private Byte role;
 

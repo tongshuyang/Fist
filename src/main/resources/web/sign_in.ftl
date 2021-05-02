@@ -6,7 +6,7 @@
 </head>
 <body class="loginBody">
 <form class="layui-form">
-    <div class="title">旭日达 RMS 登录</div>
+    <div class="title">${conf.siteName!}</div>
     <div class="layui-form-item input-item">
         <label for="userName">用户名</label>
         <input type="text" placeholder="请输入用户名" autocomplete="off" name="username" class="layui-input" lay-verify="required">
@@ -18,15 +18,15 @@
     <div class="layui-form-item input-item" id="imgCode">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入验证码" autocomplete="off" name="code" class="layui-input" lay-verify="required">
-        <img src="/admin_user/get_verify_code" id="imgObj" onclick="changeImg()" alt="verify">
+        <img src="/user/get_verify_code" id="imgObj" onclick="changeImg()" alt="verify">
     </div>
     <div class="layui-form-item">
         <button class="layui-btn layui-block" lay-filter="sign_in" lay-submit>登录</button>
     </div>
 </form>
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/sign_in.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/cache.js"></script>
+<script type="text/javascript" src="/static/mine/js/sign_in.js"></script>
+<script type="text/javascript" src="/static/mine/js/cache.js"></script>
 <script>
     //在最外层页面打开
     if (window !== top){

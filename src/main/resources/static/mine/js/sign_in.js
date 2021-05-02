@@ -6,10 +6,10 @@ layui.use(['form','layer','jquery'],function(){
     //登录按钮
     form.on('submit(sign_in)',function(data){
         layer.load(2);
-        $.post("/admin_user/sign_in_do",data.field,function(res){
+        $.post("/user/sign_in",data.field,function(res){
             layer.closeAll('loading');
             if(res.rs){
-                window.location.href = "/rms/admin";
+                window.location.href = "/fist";
             }else{
                 layer.msg(res.info, {time: 2000});
             }

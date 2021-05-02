@@ -28,18 +28,6 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 跳转登录界面
-     *
-     * @return java.lang.String
-     * @author SoyungTong
-     * @date 2021/5/2 13:07
-     */
-    @GetMapping("/sign_in_view")
-    public String signInView(){
-        return "sign_in";
-    }
-
-    /**
      * 用户登录验证
      *
      * @param request 请求
