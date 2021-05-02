@@ -1,17 +1,16 @@
 package cn.litman.fist.service.impl;
 
+import cn.litman.fist.common.Constant;
+import cn.litman.fist.common.PageMsg;
+import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.WebConfig;
+import cn.litman.fist.mapper.WebConfigMapper;
+import cn.litman.fist.service.WebConfigService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xrdkx.website.common.Constant;
-import com.xrdkx.website.common.PageMsg;
-import com.xrdkx.website.common.ReturnMsg;
-import com.xrdkx.website.entity.WebConfig;
-import com.xrdkx.website.mapper.WebConfigMapper;
-import com.xrdkx.website.service.WebConfigService;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 

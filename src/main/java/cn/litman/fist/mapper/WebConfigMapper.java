@@ -1,7 +1,6 @@
 package cn.litman.fist.mapper;
 
-import com.xrdkx.website.entity.WebConfig;
-
+import cn.litman.fist.entity.WebConfig;
 import java.util.List;
 
 /**

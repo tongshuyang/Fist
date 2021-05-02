@@ -5,20 +5,24 @@
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="role" jdbcType="TINYINT" property="role" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="is_ban" jdbcType="TINYINT" property="isBan" />
   </resultMap>
   <!--新增用户-->
-  <insert id="insertSelective" parameterType="cn.litman.fist.entity.User">
-    insert into admin_user
+  <insert id="insertUser" parameterType="cn.litman.fist.entity.User">
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null and username != ''">
         username,
       </if>
       <if test="password != null and password != ''">
         password,
+      </if>
+      <if test="name != null and name != ''">
+        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -28,61 +32,68 @@
       <if test="password != null and password != ''">
         MD5(#{password,jdbcType=VARCHAR}),
       </if>
+      <if test="name != null and name != ''">
+        #{name,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <!--后台用户修改密码-->
   <update id="updatePwd">
-    UPDATE admin_user
+    UPDATE user
     SET password = MD5(#{newPwd,jdbcType=VARCHAR})
     WHERE id = #{id,jdbcType=INTEGER}
     AND is_ban = 0
     AND password = MD5(#{oldPwd,jdbcType=VARCHAR})
   </update>
   <!--修改用户-->
-  <update id="updateAdminUser">
-    UPDATE admin_user
+  <update id="updateUser">
+    UPDATE user
     SET
     <trim suffixOverrides=",">
       <if test="username != null and username != ''">
-        username = #{username,jdbcType=CHAR},
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null and password != ''">
         password = MD5(#{password,jdbcType=VARCHAR}),
+      </if>
+      <if test="name != null and name != ''">
+        name = #{name,jdbcType=VARCHAR},
       </if>
     </trim>
     WHERE id = #{id,jdbcType=INTEGER}
   </update>
   <!--禁用用户-->
-  <update id="updateIsBanById">
-    UPDATE admin_user
+  <update id="banUserById">
+    UPDATE user
     SET is_ban = #{isBan,jdbcType=TINYINT}
     WHERE id = #{id,jdbcType=INTEGER}
   </update>
-  <!--查询用户是否存在-->
-  <select id="findByName" resultType="java.lang.String">
+  <!--查询用户名是否存在-->
+  <select id="findByUserName" resultType="java.lang.String">
     SELECT username
-    FROM admin_user
+    FROM user
     WHERE is_ban = 0
     AND username = #{username,jdbcType=VARCHAR}
   </select>
-  <!--用户登录-->
-  <select id="selectByPwd" resultMap="BaseResultMap">
+  <!--用户登录验证-->
+  <select id="verifyUser" resultMap="BaseResultMap">
     SELECT *
-    FROM admin_user
+    FROM user
     WHERE is_ban = 0
     AND username = #{username,jdbcType=VARCHAR}
     AND password = MD5(#{password,jdbcType=VARCHAR})
   </select>
   <!--获取用户列表-->
-  <select id="listAdminUser" resultMap="BaseResultMap">
+  <select id="listUser" resultMap="BaseResultMap">
     SELECT
     id,
     username,
+    name,
     role,
+    is_ban,
     create_time,
-    update_time,
-    is_ban
-    FROM admin_user
+    update_time
+    FROM user
     WHERE 1=1
     <if test="username != null and username != ''">
       AND username LIKE CONCAT(CONCAT('%', #{username,jdbcType=VARCHAR}), '%')

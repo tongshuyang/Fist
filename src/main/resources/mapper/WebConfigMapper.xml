@@ -6,6 +6,7 @@
     <result column="key" jdbcType="VARCHAR" property="key" />
     <result column="value" jdbcType="VARCHAR" property="value" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_private" jdbcType="INTEGER" property="isPrivate" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
@@ -41,6 +42,9 @@
     <trim suffixOverrides=",">
       <if test="value != null and value != ''">
         value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrivate != null and isPrivate != ''">
+        is_private = #{isPrivate,jdbcType=INTEGER},
       </if>
     </trim>
     WHERE id = #{id,jdbcType=INTEGER}

@@ -1,29 +1,29 @@
 package cn.litman.fist.service;
 
-import com.xrdkx.website.common.PageMsg;
-import com.xrdkx.website.common.ReturnMsg;
-import com.xrdkx.website.entity.AdminUser;
-
+import cn.litman.fist.common.PageMsg;
+import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.User;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 后台用户服务接口
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/4/16 17:59
+ * 用户服务接口类
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 13:11
  */
 public interface UserService {
+
     /**
      * 后台登录
      *
      * @param request 请求
-     * @param adminUser 用户实体类
+     * @param user 用户实体类
      * @param code 验证码
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/16 17:56
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 13:11
      */
-    ReturnMsg signIn(HttpServletRequest request, AdminUser adminUser, String code);
+    ReturnMsg signIn(HttpServletRequest request, User user, String code);
 
     /**
      * 后台用户修改密码
@@ -32,52 +32,52 @@ public interface UserService {
      * @param oldPwd 老密码
      * @param newPwd 新密码
      * @param request 请求
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/17 23:29
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 14:22
      */
     ReturnMsg altPwd(Integer id, String oldPwd, String newPwd, HttpServletRequest request);
 
     /**
-     * 获取后台用户列表
+     * 获取用户列表
      *
-     * @param adminUser 后台用户实体类
+     * @param user 后台用户实体类
      * @param page 页码
      * @param limit 每页数据量
-     * @return com.xrdkx.website.common.PageMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
+     * @return cn.litman.fist.common.PageMsg
+     * @author SoyungTong
+     * @date 2021/5/2 14:22
      */
-    PageMsg getAdminUserList(AdminUser adminUser, Integer page, Integer limit);
+    PageMsg listUser(User user, Integer page, Integer limit);
 
     /**
-     * 添加后台用户
+     * 添加用户
      *
-     * @param adminUser 后台用户实体类
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
+     * @param user 后台用户实体类
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 14:22
      */
-    ReturnMsg addAdminUser(AdminUser adminUser);
+    ReturnMsg addUser(User user);
 
     /**
-     * 修改后台用户
+     * 修改用户
      *
-     * @param adminUser 后台用户实体类
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
+     * @param user 用户实体类
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 14:42
      */
-    ReturnMsg altAdminUser(AdminUser adminUser);
+    ReturnMsg altUser(User user);
 
     /**
-     * 禁用后台用户
+     * 禁用用户
      *
      * @param id 后台用户id
      * @param isBan 禁用 0否 1是
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 14:48
      */
-    ReturnMsg banAdminUser(Integer id,Integer isBan);
+    ReturnMsg banUser(Integer id,Integer isBan);
 }

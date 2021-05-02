@@ -1,5 +1,7 @@
 package cn.litman.fist.service.impl;
 
+import cn.litman.fist.common.Constant;
+import cn.litman.fist.common.PageMsg;
 import cn.litman.fist.common.ReturnMsg;
 import cn.litman.fist.entity.User;
 import cn.litman.fist.mapper.UserMapper;
@@ -9,164 +11,103 @@ import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/4/16 11:32
+ * 用户服务实现类
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 13:13
  */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserMapper UserMapper;
+    private UserMapper userMapper;
 
-    /**
-     * 后台登录
-     *
-     * @param request 请求
-     * @param adminUser 用户实体类
-     * @param code 验证码
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/16 17:56
-     */
     @Override
-    public ReturnMsg signIn(HttpServletRequest request, User User, String code) {
-        String uname = adminUser.getUsername();
-
-        Validate.notNull(uname, "请输入用户名");
-        Validate.notNull(adminUser.getPassword(), "请填写密码");
+    public ReturnMsg signIn(HttpServletRequest request, User user, String code) {
+        //验证参数填写是否正确
+        String userName = user.getUsername();
+        Validate.notNull(userName, "请输入用户名");
+        Validate.notNull(user.getPassword(), "请填写密码");
         Validate.notNull(code,"请输入验证码");
         String codeSession = request.getSession().getAttribute("code").toString();
         Validate.isTrue(code.equalsIgnoreCase(codeSession),"验证码错误");
-
-        LoginLog loginLog=new LoginLog();
-        loginLog.setAccount(uname);
-        loginLog.setType((byte)1);
-        //获取客户端IP
-        String ip = request.getRemoteAddr();
-        if(ip != null){
-            loginLog.setIp(ip);
-            loginLog.setAddress(IpUtil.searchAddr(ip));
-        }
-        loginLog.setResult((byte)1);
+        //验证用户是否存在，用户名和密码是否正确
         ReturnMsg returnMsg = new ReturnMsg("用户不存在");
-        //验证用户名和密码是否正确
-        if(adminUserMapper.findByName(uname) != null){
-            adminUser = adminUserMapper.selectByPwd(adminUser);
-            if(adminUser != null){
-                loginLog.setResult((byte)0);
+        if(userMapper.findByUserName(userName) != null){
+            user = userMapper.verifyUser(user);
+            if(user != null){
                 returnMsg=ReturnMsg.SUCCESS;
-                adminUser.setPassword(null);
-                request.getSession().setAttribute(Constant.ADMIN_USER_SESSION, adminUser);
+                user.setPassword(null);
+                //用户信息放入session中
+                request.getSession().setAttribute(Constant.USER_SESSION, user);
             }else {
-                loginLog.setResult((byte)2);
                 returnMsg=new ReturnMsg("密码错误");
             }
         }
-        loginLogMapper.insertSelective(loginLog);
         return returnMsg;
     }
 
-    /**
-     * 后台用户修改密码
-     *
-     * @param id 用户id
-     * @param oldPwd 老密码
-     * @param newPwd 新密码
-     * @param request 请求
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/17 23:40
-     */
     @Override
     public ReturnMsg altPwd(Integer id, String oldPwd, String newPwd, HttpServletRequest request) {
+        //参数验证
         Validate.notNull(id,"id不能为空");
         Validate.notNull(oldPwd,"请输入旧密码");
         Validate.notNull(newPwd,"请输入新密码");
         Validate.isTrue(!oldPwd.equals(newPwd),"新密码和旧密码相同");
-
-        if(adminUserMapper.updatePwd(id,oldPwd,newPwd)){
-            request.getSession().removeAttribute(Constant.ADMIN_USER_SESSION);
+        //修改密码
+        if(userMapper.updatePwd(id,oldPwd,newPwd)){
+            request.getSession().removeAttribute(Constant.USER_SESSION);
             return new ReturnMsg(true,ReturnMsg.RESET_SUCCESS);
         }
-        return new ReturnMsg("修改失败，请确认原密码是否正确");
+        return new ReturnMsg("密码修改失败，请确认原密码是否正确");
     }
 
-    /**
-     * 获取后台用户列表
-     *
-     * @param adminUser 后台用户实体类
-     * @param page 页码
-     * @param limit 每页数据量
-     * @return com.xrdkx.website.common.PageMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
-     */
     @Override
-    public PageMsg getAdminUserList(AdminUser adminUser, Integer page, Integer limit) {
+    public PageMsg listUser(User user, Integer page, Integer limit) {
+        //参数验证
         Validate.notNull(page);
         Validate.notNull(limit);
+        //分页并返回结果
         PageHelper.startPage(page,limit);
-        PageInfo listAd = new PageInfo<>(adminUserMapper.listAdminUser(adminUser));
-        return new PageMsg(listAd.getTotal(),listAd.getList());
+        PageInfo<User> listUser = new PageInfo<>(userMapper.listUser(user));
+        return new PageMsg(listUser.getTotal(),listUser.getList());
     }
 
-    /**
-     * 添加后台用户
-     *
-     * @param adminUser 后台用户实体类
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
-     */
     @Override
-    public ReturnMsg addAdminUser(AdminUser adminUser) {
-        Validate.notNull(adminUser.getUsername(),"请输入用户名");
-        Validate.notNull(adminUser.getPassword(),"请输入密码");
-        if(adminUserMapper.insertSelective(adminUser)){
+    public ReturnMsg addUser(User user) {
+        //参数验证
+        Validate.notNull(user.getUsername(),"请输入用户名");
+        Validate.notNull(user.getPassword(),"请输入密码");
+        //添加用户信息
+        if(userMapper.insertUser(user)){
             return ReturnMsg.SUCCESS;
         }
         return ReturnMsg.FAIL;
     }
 
-    /**
-     * 修改后台用户
-     *
-     * @param adminUser 后台用户实体类
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
-     */
     @Override
-    public ReturnMsg altAdminUser(AdminUser adminUser) {
-        if(adminUserMapper.updateAdminUser(adminUser)){
+    public ReturnMsg altUser(User user) {
+        if(userMapper.updateUser(user)){
             return ReturnMsg.SUCCESS;
         }
         return ReturnMsg.FAIL;
     }
 
-    /**
-     * 禁用后台用户
-     *
-     * @param id 后台用户id
-     * @param isBan 禁用 0否 1是
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 15:16
-     */
     @Override
-    public ReturnMsg banAdminUser(Integer id, Integer isBan) {
+    public ReturnMsg banUser(Integer id, Integer isBan) {
+        //参数验证
         Validate.notNull(id);
         Validate.notNull(isBan);
+        //修改禁用状态
         if(isBan == 0){
             isBan = 1;
         }else {
             isBan = 0;
         }
-        if(adminUserMapper.updateIsBanById(id,isBan)){
+        //禁用用户
+        if(userMapper.banUserById(id,isBan)){
             return ReturnMsg.SUCCESS;
         }
         return ReturnMsg.FAIL;

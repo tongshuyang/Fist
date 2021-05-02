@@ -1,9 +1,9 @@
 package cn.litman.fist.controller;
 
-import com.xrdkx.website.common.PageMsg;
-import com.xrdkx.website.common.ReturnMsg;
-import com.xrdkx.website.entity.WebConfig;
-import com.xrdkx.website.service.WebConfigService;
+import cn.litman.fist.common.PageMsg;
+import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.WebConfig;
+import cn.litman.fist.service.WebConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

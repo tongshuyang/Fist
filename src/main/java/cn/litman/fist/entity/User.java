@@ -14,6 +14,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class User {
+
+    /**
+     * 用户ID
+     */
     private Integer id;
 
     /**
@@ -27,9 +31,19 @@ public class User {
     private String password;
 
     /**
-     * 角色：0：super  1：admin
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 角色, 0：admin 1：user
      */
     private Byte role;
+
+    /**
+     * 是否禁用：0 :否  1：是
+     */
+    private Byte isBan;
 
     /**
      * 创建时间
@@ -41,8 +55,4 @@ public class User {
      */
     private Date updateTime;
 
-    /**
-     * 是否禁用：0 :否  1：是
-     */
-    private Byte isBan;
 }

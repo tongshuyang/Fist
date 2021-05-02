@@ -7,13 +7,17 @@ import java.util.Date;
 
 /**
  * 网站配置实体类
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/3/23 10:04
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 15:07
  */
 @Getter
 @Setter
 public class WebConfig {
+
+    /**
+     * 配置项ID
+     */
     private Integer id;
 
     /**
@@ -22,7 +26,7 @@ public class WebConfig {
     private String key;
 
     /**
-     * 配置值
+     * 配置项值
      */
     private String value;
 
@@ -30,6 +34,11 @@ public class WebConfig {
      * 配置说明
      */
     private String remark;
+
+    /**
+     * 是否私有 0：公开 1：私有
+     */
+    private Integer isPrivate;
 
     /**
      * 修改时间

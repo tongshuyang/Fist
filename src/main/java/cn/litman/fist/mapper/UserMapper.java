@@ -1,87 +1,86 @@
 package cn.litman.fist.mapper;
 
-import com.xrdkx.website.entity.AdminUser;
-
+import cn.litman.fist.entity.User;
 import java.util.List;
 
 /**
  * 管理员信息映射接口
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/3/23 10:10
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 13:17
  */
 public interface UserMapper {
 
     /**
-     * 添加后台用户
+     * 添加用户
      *
-     * @param adminUser 后台用户实体类
+     * @param user 用户实体类
      * @return Boolean
-     * @author Soyung
-     * @date 2019/4/16 22:35
+     * @author SoyungTong
+     * @date 2021/5/2 13:17
      */
-    Boolean insertSelective(AdminUser adminUser);
+    Boolean insertUser(User user);
 
     /**
      * 查询用户是否存在
      *
-     * @param uname 用户名
+     * @param userName 用户名
      * @return String
-     * @author Soyung
-     * @date 2019/4/16 22:04
+     * @author SoyungTong
+     * @date 2021/5/2 13:17
      */
-    String findByName(String uname);
+    String findByUserName(String userName);
 
     /**
-     * 后台用户登录
+     * 用户登录验证
      *
-     * @param adminUser 后台用户实体类
-     * @return com.xrdkx.website.entity.AdminUser
-     * @author Soyung
-     * @date 2019/4/16 22:13
+     * @param user 用户实体类
+     * @return cn.litman.fist.entity.AdminUser
+     * @author SoyungTong
+     * @date 2021/5/2 13:17
      */
-    AdminUser selectByPwd(AdminUser adminUser);
+    User verifyUser(User user);
 
     /**
-     * 后台用户修改密码
+     * 用户修改密码
      *
      * @param id 用户id
      * @param oldPwd 老密码
      * @param newPwd 新密码
-     * @return boolean
-     * @author Soyung
-     * @date 2019/4/17 23:43
-     */
-    boolean updatePwd(Integer id, String oldPwd, String newPwd);
-
-    /**
-     * 获取后台用户列表
-     *
-     * @param adminUser 后台用户实体类
-     * @return java.util.List<com.xrdkx.website.entity.AdminUser>
-     * @author Soyung
-     * @date 2019/4/26 15:41
-     */
-    List<AdminUser> listAdminUser(AdminUser adminUser);
-
-    /**
-     * 修改后台用户
-     *
-     * @param adminUser 后台用户实体类
      * @return java.lang.Boolean
-     * @author Soyung
-     * @date 2019/4/26 15:42
+     * @author SoyungTong
+     * @date 2021/5/2 13:17
      */
-    Boolean updateAdminUser(AdminUser adminUser);
+    Boolean updatePwd(Integer id, String oldPwd, String newPwd);
 
     /**
-     * 禁用后台用户
+     * 获取用户列表
      *
-     * @param id 后台用户id
+     * @param user 用户实体类
+     * @return java.util.List<cn.litman.fist.entity.User>
+     * @author SoyungTong
+     * @date 2021/5/2 15:04
+     */
+    List<User> listUser(User user);
+
+    /**
+     * 修改用户信息
+     *
+     * @param user 用户实体类
+     * @return java.lang.Boolean
+     * @author SoyungTong
+     * @date 2021/5/2 14:43
+     */
+    Boolean updateUser(User user);
+
+    /**
+     * 禁用用户
+     *
+     * @param id 用户id
      * @param isBan 禁止
      * @return java.lang.Boolean
-     * @author Soyung
-     * @date 2019/4/26 15:43
+     * @author SoyungTong
+     * @date 2021/5/2 15:04
      */
-    Boolean updateIsBanById(Integer id, Integer isBan);
+    Boolean banUserById(Integer id, Integer isBan);
 }

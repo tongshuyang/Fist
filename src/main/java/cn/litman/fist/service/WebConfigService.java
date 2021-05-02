@@ -1,10 +1,9 @@
 package cn.litman.fist.service;
 
-import com.xrdkx.website.common.PageMsg;
-import com.xrdkx.website.common.ReturnMsg;
-import com.xrdkx.website.entity.WebConfig;
+import cn.litman.fist.common.PageMsg;
+import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.WebConfig;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
