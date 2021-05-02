@@ -43,7 +43,7 @@ public class ViewController {
      * @author SoyungTong
      * @date 2021/5/2 16:36
      */
-    @GetMapping("/home")
+    @GetMapping("/fist/home")
     public String home(){
         return "home";
     }

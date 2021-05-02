@@ -12,7 +12,7 @@
     <meta name="author" content="SoyungTong">
     <meta name="renderer" content="webkit">
 
-    <title>后台管理-${conf.siteName!}</title>
+    <title>${conf.siteName!} Case Manage</title>
 
     <link rel="alternate icon" type="image/png" href="${conf.endpoint!}${conf.favicon!}">
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
@@ -46,7 +46,7 @@
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
             <a class="img"><img src="${conf.endpoint!}${conf.favicon!}" class="userAvatar" alt="logo"></a>
-            <p>你好！<span class="userName">${user.username!}</span>, 欢迎登录</p>
+            <p><span class="userName">${user.username!}</span> ，欢迎登录</p>
             <div id="role" class="layui-hide">${user.role!}</div>
         </div>
 
@@ -76,7 +76,7 @@
             </ul>
             <div class="layui-tab-content clildFrame">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="/home"></iframe>
+                    <iframe src="/fist/home"></iframe>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@ public class WebConfigController {
      * @author SoyungTong
      * @date 2021/5/2 16:50
      */
-    @GetMapping("/conf_manage_view")
+    @GetMapping("/conf_manage_view/verify")
     public String confManageView(){
         return "conf_manage";
     }
@@ -62,7 +62,7 @@ public class WebConfigController {
      * @date 2021/5/2 17:05
      */
     @ResponseBody
-    @PostMapping("/alt_conf")
+    @PostMapping("/alt_conf/verify")
     public ReturnMsg altConf(WebConfig webConfig, HttpServletRequest request) {
         return webConfigService.altConf(webConfig, request);
     }

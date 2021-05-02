@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <#include "head.ftl">
-    <title>后台用户管理 -${conf.siteName!}</title>
+    <title>用户管理 -${conf.siteName!}</title>
 </head>
 <body class="childrenBody">
 
@@ -19,15 +19,15 @@
         </div>
     </form>
 </blockquote>
-<table id="adminUserList" lay-filter="adminUserList" class="layui-hide"></table>
+<table id="userList" lay-filter="userList" class="layui-hide"></table>
 
 <!--操作-->
-<script type="text/html" id="adminUserListBar">
+<script type="text/html" id="userListBar">
     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="alt">修改</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="ban">禁用</a>
 </script>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/admin_user_manage.js"></script>
+<script type="text/javascript" src="/static/mine/js/user_manage.js"></script>
 </body>
 </html>

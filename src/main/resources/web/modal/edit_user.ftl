@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>修改后台用户</title>
+    <title>编辑用户</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
-    <link rel="stylesheet" href="/static/mine/rms/css/public.css">
+    <link rel="stylesheet" href="/static/mine/css/public.css">
 </head>
 <body class="childrenBody">
 <form class="layui-form altForm" lay-filter="editForm">
@@ -23,6 +23,12 @@
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" class="layui-input" lay-verify="required" placeholder="请输入姓名"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
         <button class="layui-btn layui-btn-fluid" lay-filter="editSubmit" lay-submit>立即提交</button>
     </div>
 </form>
@@ -33,9 +39,9 @@
             $ = layui.$,
             form = layui.form;
 
-        var formUrl = '/admin_user/rms/alt_admin_user';
+        var formUrl = '/user/alt_user/verify';
         if(parent.rowdata === undefined){
-            formUrl = '/admin_user/rms/add_admin_user'
+            formUrl = '/user/add_user/verify'
         }else {
             //赋初值
             form.val('editForm', $.extend(true,{},parent.rowdata));
@@ -46,7 +52,7 @@
             layer.closeAll();
             $.post(formUrl,data.field,function (res) {
                 if(res.rs){
-                    parent.location.href = "/admin_user/rms/admin_user_manage"
+                    parent.location.href = "/user/user_manage_view/verify"
                 }
                 layer.msg(res.info, {time: 2000});
             });

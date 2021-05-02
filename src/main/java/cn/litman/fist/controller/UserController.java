@@ -81,7 +81,7 @@ public class UserController {
     @GetMapping("/sign_out")
     public ReturnMsg signOut(HttpServletRequest request){
         request.getSession().removeAttribute(Constant.USER_SESSION);
-        return new ReturnMsg(true,"退出成功","/sign_in");
+        return new ReturnMsg(true,"退出成功","/");
     }
 
     /**
@@ -91,7 +91,7 @@ public class UserController {
      * @author SoyungTong
      * @date 2021/5/2 13:55
      */
-    @GetMapping("/alt_pwd_view")
+    @GetMapping("/alt_pwd_view/verify")
     public String altPwdView(){
         return "alt_pwd";
     }
@@ -108,7 +108,7 @@ public class UserController {
      * @date 2021/5/2 14:06
      */
     @ResponseBody
-    @PostMapping("/alt_pwd")
+    @PostMapping("/alt_pwd/verify")
     public ReturnMsg altPwd(Integer id, String oldPwd,String newPwd, HttpServletRequest request){
         return userService.altPwd(id, oldPwd, newPwd, request);
     }
@@ -120,7 +120,7 @@ public class UserController {
      * @author SoyungTong
      * @date 2021/5/2 14:06
      */
-    @GetMapping("/user_manage_view")
+    @GetMapping("/user_manage_view/verify")
     public String userManageView(){
         return "user_manage";
     }
@@ -132,7 +132,7 @@ public class UserController {
      * @author SoyungTong
      * @date 2021/5/2 14:06
      */
-    @GetMapping("/edit_user_dialog")
+    @GetMapping("/edit_user_dialog/verify")
     public String editUserDialog(){
         return "/modal/edit_user";
     }
@@ -148,7 +148,7 @@ public class UserController {
      * @date 2021/5/2 14:06
      */
     @ResponseBody
-    @GetMapping("/list_user")
+    @GetMapping("/list_user/verify")
     public PageMsg listUser(User user, Integer page, Integer limit){
         return userService.listUser(user, page, limit);
     }
@@ -162,7 +162,7 @@ public class UserController {
      * @date 2021/5/2 14:38
      */
     @ResponseBody
-    @PostMapping("/add_user")
+    @PostMapping("/add_user/verify")
     public ReturnMsg addUser(User user) {
         return userService.addUser(user);
     }
@@ -176,7 +176,7 @@ public class UserController {
      * @date 2021/5/2 14:40
      */
     @ResponseBody
-    @PostMapping("/alt_user")
+    @PostMapping("/alt_user/verify")
     public ReturnMsg altUser(User user) {
         return userService.altUser(user);
     }
@@ -191,7 +191,7 @@ public class UserController {
      * @date 2021/5/2 14:48
      */
     @ResponseBody
-    @GetMapping("/ban_user")
+    @GetMapping("/ban_user/verify")
     public ReturnMsg banUser(Integer id, Integer isBan){
         return userService.banUser(id, isBan);
     }

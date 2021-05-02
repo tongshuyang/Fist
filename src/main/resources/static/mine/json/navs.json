@@ -101,13 +101,13 @@
 				{
 					"title": "用户列表",
 					"icon": "&#xe770;",
-					"href": "/user/user_manage_view",
+					"href": "/user/user_manage_view/verify",
 					"spread": false
 				},
 				{
 					"title": "参数配置",
 					"icon": "&#xe631;",
-					"href": "/conf/conf_manage_view",
+					"href": "/conf/conf_manage_view/verify",
 					"spread": false
 				}
 			]
