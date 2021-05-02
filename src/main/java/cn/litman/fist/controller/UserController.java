@@ -63,7 +63,7 @@ public class UserController {
         //生成验证码
         VerifyCode verifyCode = new VerifyCode(120,36,4,100);
         //放入session，后续验证使用
-        request.getSession().setAttribute("code", verifyCode.getCode());
+        request.getSession().setAttribute(Constant.CODE_SESSION, verifyCode.getCode());
         //验证码图片返回给前端界面
         verifyCode.write(response.getOutputStream());
         return null;

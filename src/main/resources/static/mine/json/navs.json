@@ -1,5 +1,5 @@
 {
-	"super" : [
+	"user" : [
 		{
 			"title": "用户管理",
 			"icon": "&#xe612;",
@@ -61,32 +61,6 @@
 	],
 	"admin" : [
 		{
-			"title": "用户管理",
-			"icon": "&#xe612;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "用户列表",
-					"icon": "&#xe770;",
-					"href": "/user/rms/user_manage",
-					"spread": false
-				},
-				{
-					"title": "用户评论",
-					"icon": "&#xe63a;",
-					"href": "/comment/rms/comment_manage",
-					"spread": false
-				},
-				{
-					"title": "系统通知",
-					"icon": "&#xe667;",
-					"href": "/notice/rms/notice_manage",
-					"spread": false
-				}
-			]
-		},
-		{
 			"title": "网站内容",
 			"icon": "&#xe632;",
 			"href": "",
@@ -99,13 +73,13 @@
 					"spread": false
 				},
 				{
-					"title": "网站动态",
+					"title": "案列管理",
 					"icon": "&#xe609;",
 					"href": "/moving/rms/moving_manage",
 					"spread": false
 				},
 				{
-					"title": "网站留言",
+					"title": "客户管理",
 					"icon": "&#xe63c;",
 					"href": "/leave_word/rms/leave_word_manage",
 					"spread": false

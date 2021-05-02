@@ -24,7 +24,7 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns 添加拦截路径, excludePathPatterns 排除拦截路径
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/user/*").excludePathPatterns("/user/get_verify_code");
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/user/*").excludePathPatterns("/user/get_verify_code","/user/sign_in");
         registry.addInterceptor(confInterceptor()).addPathPatterns("/**").excludePathPatterns("/static/*");
     }
 }

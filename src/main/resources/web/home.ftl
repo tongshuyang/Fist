@@ -15,7 +15,7 @@
                 <i class="layui-icon seraph layui-anim layui-icon-form"></i>
             </div>
             <div class="panel_word">
-                <span>${home.leaveWord}</span>
+                <span>3</span>
                 <em>新的留言</em>
                 <cite class="layui-hide">网站留言</cite>
             </div>
@@ -27,7 +27,7 @@
                 <i class="layui-anim layui-icon layui-icon-dialogue"></i>
             </div>
             <div class="panel_word">
-                <span>${home.comment}</span>
+                <span>5</span>
                 <em>待审核评论</em>
                 <cite class="layui-hide">用户评论</cite>
             </div>
@@ -39,7 +39,7 @@
                 <i class="layui-icon layui-anim seraph layui-icon-log"></i>
             </div>
             <div class="panel_word">
-                <span>${visits.daily}</span>
+                <span>7</span>
                 <em>日访问量</em>
                 <cite class="layui-hide">访问量统计</cite>
             </div>
@@ -51,8 +51,7 @@
                 <i class="layui-anim seraph icon-clock"></i>
             </div>
             <div class="panel_word">
-                <#assign count = visits.daily + visits.count>
-                <span>${count}</span>
+                <span>90</span>
                 <em>总访问量</em>
                 <cite class="layui-hide">访问量统计</cite>
             </div>
@@ -64,7 +63,7 @@
                 <i class="layui-anim seraph icon-icon10" data-icon="icon-icon10"></i>
             </div>
             <div class="panel_word userAll">
-                <span>${home.userCount}</span>
+                <span>1</span>
                 <em>用户总数</em>
                 <cite class="layui-hide">用户列表</cite>
             </div>
@@ -76,7 +75,7 @@
                 <i class="layui-anim seraph icon-log"></i>
             </div>
             <div class="panel_word">
-                <span style="font-size: 14px;color: rgba(95, 184, 120, 1)">${home.lastLogin.time!?datetime} <br> ${home.lastLogin.address!}</span>
+                <span style="font-size: 14px;color: rgba(95, 184, 120, 1)"> 1<br> 2</span>
                 <em>上次登录信息</em>
                 <cite class="layui-hide">登录日志</cite>
             </div>
@@ -97,12 +96,8 @@
                 <td>${conf.siteName!}</td>
             </tr>
             <tr>
-                <td>开发作者</td>
-                <td>${conf.author!}</td>
-            </tr>
-            <tr>
-                <td>备案号</td>
-                <td>${conf.record!}</td>
+                <td>反馈邮箱</td>
+                <td>${conf.email!}</td>
             </tr>
             <tr>
                 <td>最大上传限制</td>
@@ -118,7 +113,7 @@
             </tr>
             <tr>
                 <td>当前用户权限</td>
-                <td><#if adminUser.role = 1>普通后台管理<#else>上天入地超级管理</#if></td>
+                <td><#if user.role = 1>上天入地超级管理<#else>普通用户</#if></td>
             </tr>
             </tbody>
         </table>
@@ -133,18 +128,18 @@
                 <col>
             </colgroup>
             <tbody>
-            <#list home.leaveWordList as leaveWord>
-                <tr>
-                    <td>${leaveWord.name!} : </td>
-                    <td>${leaveWord.content!} —${leaveWord.createTime!?string("yyyy/MM/dd HH:mm")}</td>
-                </tr>
-            </#list>
+<#--            <#list home.leaveWordList as leaveWord>-->
+<#--                <tr>-->
+<#--                    <td>${leaveWord.name!} : </td>-->
+<#--                    <td>${leaveWord.content!} —${leaveWord.createTime!?string("yyyy/MM/dd HH:mm")}</td>-->
+<#--                </tr>-->
+<#--            </#list>-->
             </tbody>
         </table>
     </div>
 </div>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/home.js"></script>
+<script type="text/javascript" src="/static/mine/js/home.js"></script>
 </body>
 </html>

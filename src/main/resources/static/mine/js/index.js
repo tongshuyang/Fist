@@ -1,6 +1,6 @@
 var $,tab,dataStr,layer;
 layui.config({
-	base : "/static/mine/rms/js/"
+	base : "/static/mine/js/"
 }).extend({
 	"bodyTab" : "bodyTab"
 });
@@ -16,10 +16,10 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 
 	//获取导航数据
 	$.getJSON(tab.tabConfig.url,function(data){
-	    if($("#role").text() === '0'){
-            dataStr = data.super;
-        }else {
+	    if($("#role").text() === '1'){
             dataStr = data.admin;
+        }else {
+            dataStr = data.user;
         }
 	    tab.render();
 	});

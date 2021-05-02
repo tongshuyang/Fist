@@ -23,7 +23,7 @@
     <!-- 顶部 -->
     <div class="layui-header header">
         <div class="layui-main mag0">
-            <a href="#" class="logo">旭日达 RMS</a>
+            <a href="#" class="logo">${conf.siteName!}</a>
             <!-- 显示/隐藏菜单 -->
             <a href="javascript:" class="seraph hideMenu icon-caidan"></a>
             <!-- 顶部右侧菜单 -->
@@ -45,9 +45,9 @@
     <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
-            <a class="img"><img src="${conf.img_url!}${conf.logo!}" class="userAvatar" alt="logo"></a>
-            <p>你好！<span class="userName">${adminUser.username!}</span>, 欢迎登录</p>
-            <div id="role" class="layui-hide">${adminUser.role!}</div>
+            <a class="img"><img src="${conf.endpoint!}${conf.favicon!}" class="userAvatar" alt="logo"></a>
+            <p>你好！<span class="userName">${user.username!}</span>, 欢迎登录</p>
+            <div id="role" class="layui-hide">${user.role!}</div>
         </div>
 
         <div class="navBar layui-side-scroll" id="navBar">
@@ -76,14 +76,14 @@
             </ul>
             <div class="layui-tab-content clildFrame">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="/home?account=${user.username}&type=1"></iframe>
+                    <iframe src="/home"></iframe>
                 </div>
             </div>
         </div>
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p><span>${conf.copy!}</span></p>
+        <p><span>${conf.copyRight!}</span></p>
     </div>
 </div>
 
