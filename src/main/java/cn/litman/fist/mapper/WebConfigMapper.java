@@ -5,31 +5,29 @@ import java.util.List;
 
 /**
  * 网站配置映射接口
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/3/23 17:04
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 17:07
  */
 public interface WebConfigMapper {
-
-    int insertSelective(WebConfig record);
 
     /**
      * 查询网站配置列表
      *
      * @param webConfig 网站配置实体类
-     * @return java.util.List<com.xrdkx.website.entity.WebConfig>
-     * @author Soyung
-     * @date 2019/3/29 18:48
+     * @return java.util.List<cn.litman.fist.entity.WebConfig>
+     * @author SoyungTong
+     * @date 2021/5/2 17:06
      */
-    List<WebConfig> listWebConfig(WebConfig webConfig);
+    List<WebConfig> listConf(WebConfig webConfig);
 
     /**
      * 修改网站配置
      *
      * @param webConfig 网站配置实体类
      * @return java.lang.Boolean
-     * @author Soyung
-     * @date 2019/4/26 17:40
+     * @author SoyungTong
+     * @date 2021/5/2 17:06
      */
     Boolean updateWebConfig(WebConfig webConfig);
 }

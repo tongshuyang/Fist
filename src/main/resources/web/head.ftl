@@ -6,6 +6,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
 
-<link rel="alternate icon" type="image/png" href="${conf.img_url!}${conf.favicon!}">
+<link rel="alternate icon" type="image/png" href="${conf.endpoint!}${conf.favicon!}">
 <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-<link rel="stylesheet" href="/static/mine/rms/css/public.css" media="all" />
+<link rel="stylesheet" href="/static/mine/css/public.css" media="all" />

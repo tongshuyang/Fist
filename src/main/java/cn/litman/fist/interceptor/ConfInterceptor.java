@@ -1,12 +1,11 @@
 package cn.litman.fist.interceptor;
 
-
 import cn.litman.fist.common.Constant;
 import cn.litman.fist.entity.WebConfig;
+import cn.litman.fist.mapper.WebConfigMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,21 +14,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 把网站配置存入application
+ * 网站配置放入application
  * @author SoyungTong
  * @email litman@126.com
  * @date 2021/5/1 17:06
  */
 public class ConfInterceptor implements HandlerInterceptor {
     @Autowired
-    private WebConfigService webConfigService;
+    private WebConfigMapper webConfigMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         ServletContext application = request.getServletContext();
         //加载网站配置信息
         if(application.getAttribute(Constant.CONF_SESSION) == null){
-            List<WebConfig> webConfigs = webConfigService.listWebConfig();
+            //查询公开的conf信息
+            WebConfig config = new WebConfig();
+            config.setIsPrivate(0);
+            List<WebConfig> webConfigs = webConfigMapper.listConf(config);
+            //放入application中
             Map<String,String> conf = new HashMap<>(20);
             for (WebConfig webConfig:webConfigs
             ) {

@@ -25,6 +25,6 @@
 </script>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/conf_manage.js"></script>
+<script type="text/javascript" src="/static/mine/js/conf_manage.js"></script>
 </body>
 </html>

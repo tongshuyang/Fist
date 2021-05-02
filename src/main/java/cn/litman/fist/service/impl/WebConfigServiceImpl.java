@@ -15,57 +15,27 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/3/27 13:18
+ * 网站配置服务实现类
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 17:03
  */
 @Service
 public class WebConfigServiceImpl implements WebConfigService {
     @Autowired
     private WebConfigMapper webConfigMapper;
 
-    /**
-     * 查询网站配置列表
-     *
-     * @return java.util.List<com.xrdkx.website.entity.WebConfig>
-     * @author Soyung
-     * @date 2019/3/29 18:48
-     */
     @Override
-    public List<WebConfig> listWebConfig() {
-        return webConfigMapper.listWebConfig(null);
-    }
-
-    /**
-     * 获取网站配置列表
-     *
-     * @param webConfig 网站配置实体类
-     * @param page 页码
-     * @param limit 每页数据量
-     * @return com.xrdkx.website.common.PageMsg
-     * @author Soyung
-     * @date 2019/4/26 17:34
-     */
-    @Override
-    public PageMsg getWebConfigList(WebConfig webConfig, Integer page, Integer limit) {
+    public PageMsg listConf(WebConfig webConfig, Integer page, Integer limit) {
         Validate.notNull(page);
         Validate.notNull(limit);
         PageHelper.startPage(page,limit);
-        PageInfo listAd = new PageInfo<>(webConfigMapper.listWebConfig(webConfig));
-        return new PageMsg(listAd.getTotal(),listAd.getList());
+        PageInfo<WebConfig> webConfigList = new PageInfo<>(webConfigMapper.listConf(webConfig));
+        return new PageMsg(webConfigList.getTotal(),webConfigList.getList());
     }
 
-    /**
-     * 修改网站配置
-     *
-     * @param webConfig 网站配置实体类
-     * @param request 请求
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 17:35
-     */
     @Override
-    public ReturnMsg altWebConfig(WebConfig webConfig, HttpServletRequest request) {
+    public ReturnMsg altConf(WebConfig webConfig, HttpServletRequest request) {
         if(webConfigMapper.updateWebConfig(webConfig)){
             request.getServletContext().removeAttribute(Constant.CONF_SESSION);
             return ReturnMsg.SUCCESS;

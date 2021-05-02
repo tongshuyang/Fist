@@ -57,44 +57,6 @@
 					"spread": false
 				}
 			]
-		},
-		{
-			"title": "系统设置",
-			"icon": "&#xe614;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "Manager",
-					"icon": "&#xe635;",
-					"href": "/admin_user/rms/admin_user_manage",
-					"spread": false
-				},
-				{
-					"title": "参数配置",
-					"icon": "&#xe631;",
-					"href": "/conf/rms/conf_manage",
-					"spread": false
-				},
-				{
-					"title": "登录日志",
-					"icon": "icon-log",
-					"href": "/log/rms/log_manage",
-					"spread": false
-				},
-				{
-					"title": "友情链接",
-					"icon": "&#xe64c;",
-					"href": "/friend_link/rms/link_manage",
-					"spread": false
-				},
-				{
-					"title": "访问量统计",
-					"icon": "&#xe60e;",
-					"href": "/visits/rms/visits_manage",
-					"spread": false
-				}
-			]
 		}
 	],
 	"admin" : [
@@ -163,21 +125,15 @@
 			"spread": false,
 			"children": [
 				{
-					"title": "登录日志",
-					"icon": "icon-log",
-					"href": "/log/rms/log_manage",
+					"title": "用户列表",
+					"icon": "&#xe770;",
+					"href": "/user/user_manage_view",
 					"spread": false
 				},
 				{
-					"title": "友情链接",
-					"icon": "&#xe64c;",
-					"href": "/friend_link/rms/link_manage",
-					"spread": false
-				},
-				{
-					"title": "访问量统计",
-					"icon": "&#xe60e;",
-					"href": "/visits/rms/visits_manage",
+					"title": "参数配置",
+					"icon": "&#xe631;",
+					"href": "/conf/conf_manage_view",
 					"spread": false
 				}
 			]

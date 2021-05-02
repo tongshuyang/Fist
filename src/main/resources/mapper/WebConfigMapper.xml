@@ -9,32 +9,6 @@
     <result column="is_private" jdbcType="INTEGER" property="isPrivate" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-
-  <insert id="insertSelective" parameterType="cn.litman.fist.entity.WebConfig">
-    insert into web_config
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="key != null">
-        key,
-      </if>
-      <if test="value != null">
-        value,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="key != null">
-        #{key,jdbcType=VARCHAR},
-      </if>
-      <if test="value != null">
-        #{value,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
   <!--修改网站配置-->
   <update id="updateWebConfig">
     UPDATE web_config
@@ -43,18 +17,18 @@
       <if test="value != null and value != ''">
         value = #{value,jdbcType=VARCHAR},
       </if>
-      <if test="isPrivate != null and isPrivate != ''">
-        is_private = #{isPrivate,jdbcType=INTEGER},
-      </if>
     </trim>
     WHERE id = #{id,jdbcType=INTEGER}
   </update>
   <!--查询网站配置列表-->
-  <select id="listWebConfig" resultMap="BaseResultMap">
+  <select id="listConf" resultMap="BaseResultMap">
     SELECT * FROM web_config
     WHERE 1=1
     <if test="remark != null and remark != ''">
       AND remark LIKE CONCAT(CONCAT('%', #{remark,jdbcType=VARCHAR}), '%')
+    </if>
+    <if test="isPrivate != null and isPrivate != ''">
+      AND is_private = #{isPrivate,jdbcType=INTEGER}
     </if>
   </select>
 </mapper>

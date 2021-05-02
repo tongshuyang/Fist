@@ -9,20 +9,12 @@ import java.util.List;
 
 /**
  * 网站配置类服务接口
- * @author Soyung
- * @email tsyon@qq.com
- * @date 2019/3/29 17:50
+ * @author SoyungTong
+ * @email litman@126.com
+ * @date 2021/5/2 17:02
  */
 @Service
 public interface WebConfigService {
-    /**
-     * 查询网站配置列表
-     *
-     * @return java.util.List<com.xrdkx.website.entity.WebConfig>
-     * @author Soyung
-     * @date 2019/3/29 18:48
-     */
-    List<WebConfig> listWebConfig();
 
     /**
      * 获取网站配置列表
@@ -30,20 +22,20 @@ public interface WebConfigService {
      * @param webConfig 网站配置实体类
      * @param page 页码
      * @param limit 每页数据量
-     * @return com.xrdkx.website.common.PageMsg
-     * @author Soyung
-     * @date 2019/4/26 17:34
+     * @return cn.litman.fist.common.PageMsg
+     * @author SoyungTong
+     * @date 2021/5/2 16:58
      */
-    PageMsg getWebConfigList(WebConfig webConfig, Integer page, Integer limit);
+    PageMsg listConf(WebConfig webConfig, Integer page, Integer limit);
 
     /**
      * 修改网站配置
      *
      * @param webConfig 网站配置实体类
      * @param request 请求
-     * @return com.xrdkx.website.common.ReturnMsg
-     * @author Soyung
-     * @date 2019/4/26 17:35
+     * @return cn.litman.fist.common.ReturnMsg
+     * @author SoyungTong
+     * @date 2021/5/2 17:02
      */
-    ReturnMsg altWebConfig(WebConfig webConfig, HttpServletRequest request);
+    ReturnMsg altConf(WebConfig webConfig, HttpServletRequest request);
 }

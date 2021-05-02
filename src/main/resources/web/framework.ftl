@@ -9,14 +9,14 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="format-detection" content="telephone=no">
-    <meta name="author" content="${conf.author!}">
+    <meta name="author" content="SoyungTong">
     <meta name="renderer" content="webkit">
 
     <title>后台管理-${conf.siteName!}</title>
 
-    <link rel="alternate icon" type="image/png" href="${conf.img_url!}${conf.favicon!}">
+    <link rel="alternate icon" type="image/png" href="${conf.endpoint!}${conf.favicon!}">
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/static/mine/rms/css/index.css" media="all" />
+    <link rel="stylesheet" href="/static/mine/css/index.css" media="all" />
 </head>
 <body class="main_body">
 <div class="layui-layout layui-layout-admin">
@@ -32,7 +32,7 @@
                     <a href="javascript:" class="clearCache"><i class="layui-icon" data-icon="&#xe640;">&#xe640;</i><cite>清除缓存</cite></a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:">${adminUser.username!}</a>
+                    <a href="javascript:">${user.username!}</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:" data-url="/admin_user/rms/alt_pwd_view"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
                         <dd pc><a href="javascript:" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite></a></dd>
@@ -76,7 +76,7 @@
             </ul>
             <div class="layui-tab-content clildFrame">
                 <div class="layui-tab-item layui-show">
-                    <iframe src="/rms/home?account=${adminUser.username}&type=1"></iframe>
+                    <iframe src="/home?account=${user.username}&type=1"></iframe>
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
 <div class="site-mobile-shade"></div>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/index.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/cache.js"></script>
+<script type="text/javascript" src="/static/mine/js/index.js"></script>
+<script type="text/javascript" src="/static/mine/js/cache.js"></script>
 </body>
 </html>

@@ -89,6 +89,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ReturnMsg altUser(User user) {
+        //更新用户信息
         if(userMapper.updateUser(user)){
             return ReturnMsg.SUCCESS;
         }
