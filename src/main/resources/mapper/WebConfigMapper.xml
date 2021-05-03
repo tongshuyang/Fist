@@ -22,13 +22,14 @@
   </update>
   <!--查询网站配置列表-->
   <select id="listConf" resultMap="BaseResultMap">
-    SELECT * FROM web_config
+    SELECT *
+    FROM web_config
     WHERE 1=1
-    <if test="remark != null and remark != ''">
-      AND remark LIKE CONCAT(CONCAT('%', #{remark,jdbcType=VARCHAR}), '%')
-    </if>
     <if test="isPrivate != null and isPrivate != ''">
       AND is_private = #{isPrivate,jdbcType=INTEGER}
+    </if>
+    <if test="remark != null and remark != ''">
+      AND remark LIKE CONCAT(CONCAT('%', #{remark,jdbcType=VARCHAR}), '%')
     </if>
   </select>
 </mapper>

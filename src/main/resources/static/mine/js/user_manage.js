@@ -56,7 +56,7 @@ layui.use(['form','layer','table','util'],function(){
         layer.open({
             title : "编辑后台用户",
             type : 2,
-            area : ["316px","300px"],
+            area : ["316px","290px"],
             content : '/user/edit_user_dialog/verify'
         });
     }

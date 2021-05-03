@@ -4,10 +4,10 @@ layui.use(['layer','table','laytpl','util'],function(){
         util = layui.util,
         table = layui.table;
 
-    //用户列表
+    //配置列表渲染
     table.render({
         elem: '#confList',
-        url : '/conf/rms/list_conf',
+        url : '/conf/list_conf',
         height : "full-106",
         limits : [10,20,30],
         limit : 20,
@@ -43,7 +43,7 @@ layui.use(['layer','table','laytpl','util'],function(){
             data = obj.data;
         if(layEvent === 'alt'){
             layer.prompt({title: '修改值', formType: 2, value: data.value}, function(value){
-                $.post("/conf/rms/alt_conf",{id: data.id,value: value},function (res) {
+                $.post("/conf/alt_conf/verify",{id: data.id,value: value},function (res) {
                     if(res.rs){
                         table.reload("confListTable");
                     }

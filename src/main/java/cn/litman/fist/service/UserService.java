@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface UserService {
 
     /**
-     * 后台登录
+     * 登录
      *
      * @param request 请求
      * @param user 用户实体类
@@ -26,7 +26,7 @@ public interface UserService {
     ReturnMsg signIn(HttpServletRequest request, User user, String code);
 
     /**
-     * 后台用户修改密码
+     * 修改密码
      *
      * @param id 用户id
      * @param oldPwd 老密码
