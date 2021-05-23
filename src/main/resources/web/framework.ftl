@@ -34,7 +34,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:">${user.username!}</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:" data-url="/admin_user/rms/alt_pwd_view"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
+                        <dd><a href="javascript:" data-url="/user/alt_pwd_view/verify"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
                         <dd pc><a href="javascript:" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite></a></dd>
                         <dd><a id="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
                     </dl>

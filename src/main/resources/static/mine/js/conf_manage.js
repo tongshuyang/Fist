@@ -7,7 +7,7 @@ layui.use(['layer','table','laytpl','util'],function(){
     //配置列表渲染
     table.render({
         elem: '#confList',
-        url : '/conf/list_conf',
+        url : '/conf/list_conf/verify',
         height : "full-106",
         limits : [10,20,30],
         limit : 20,

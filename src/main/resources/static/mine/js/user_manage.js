@@ -29,8 +29,8 @@ layui.use(['form','layer','table','util'],function(){
                     }
                     return "<span style=\"color: #F581B1;\">是</span>";
                 }},
-            {field: 'createTime', title: '发布时间', align:'center',minWidth: 170,templet:function(d){
-                    {{ return util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')}}
+            {field: 'createTime', title: '创建时间', align:'center',minWidth: 170,templet:function(d){
+                    {{ return util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm')}}
                 }},
             {field: 'updateTime', title: '更新时间', align:'center',minWidth: 170,templet:function(d){
                     {{ return util.toDateString(d.updateTime, 'yyyy-MM-dd HH:mm:ss')}}

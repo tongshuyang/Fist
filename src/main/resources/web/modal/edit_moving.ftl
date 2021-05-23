@@ -3,7 +3,7 @@
 <head>
     <title>编辑动态</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
-    <link rel="stylesheet" href="/static/mine/rms/css/public.css">
+    <link rel="stylesheet" href="/static/mine/css/public.css">
 </head>
 <body class="childrenBody">
 <form class="layui-form layui-row layui-col-space10 altForm" lay-filter="editForm">

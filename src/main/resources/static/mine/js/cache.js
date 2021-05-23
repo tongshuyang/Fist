@@ -10,7 +10,7 @@ layui.use(['form','jquery',"layer"],function() {
         menu = [];
         window.sessionStorage.removeItem("curmenu");
         window.sessionStorage.removeItem("adminUser");
-        $.get("/admin_user/sign_out",function(res){
+        $.get("/user/sign_out",function(res){
             window.location.href = res.data;
         });
     });

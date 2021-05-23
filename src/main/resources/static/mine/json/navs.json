@@ -1,96 +1,42 @@
 {
 	"user" : [
 		{
-			"title": "用户管理",
-			"icon": "&#xe612;",
+			"title": "我的案例",
+			"icon": "&#xe66e;",
 			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "用户列表",
-					"icon": "&#xe770;",
-					"href": "/user/rms/user_manage",
-					"spread": false
-				},
-				{
-					"title": "用户评论",
-					"icon": "&#xe63a;",
-					"href": "/comment/rms/comment_manage",
-					"spread": false
-				},
-				{
-					"title": "系统通知",
-					"icon": "&#xe667;",
-					"href": "/notice/rms/notice_manage",
-					"spread": false
-				}
-			]
+			"spread": false
 		},
 		{
-			"title": "网站内容",
-			"icon": "&#xe632;",
+			"title": "案例仓库",
+			"icon": "&#xe615;",
 			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "首页广告",
-					"icon": "&#xe64a;",
-					"href": "/ad/rms/ad_manage",
-					"spread": false
-				},
-				{
-					"title": "网站动态",
-					"icon": "&#xe609;",
-					"href": "/moving/rms/moving_manage",
-					"spread": false
-				},
-				{
-					"title": "网站留言",
-					"icon": "&#xe63c;",
-					"href": "/leave_word/rms/leave_word_manage",
-					"spread": false
-				},
-				{
-					"title": "服务管理",
-					"icon": "&#xe857;",
-					"href": "/service/rms/service_manage",
-					"spread": false
-				}
-			]
+			"spread": false
+		},
+		{
+			"title": "客户信息",
+			"icon": "&#xe62a;",
+			"href": "",
+			"spread": false
 		}
 	],
 	"admin" : [
 		{
-			"title": "网站内容",
-			"icon": "&#xe632;",
+			"title": "我的案例",
+			"icon": "&#xe66e;",
 			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "首页广告",
-					"icon": "&#xe64a;",
-					"href": "/ad/rms/ad_manage",
-					"spread": false
-				},
-				{
-					"title": "案列管理",
-					"icon": "&#xe609;",
-					"href": "/moving/rms/moving_manage",
-					"spread": false
-				},
-				{
-					"title": "客户管理",
-					"icon": "&#xe63c;",
-					"href": "/leave_word/rms/leave_word_manage",
-					"spread": false
-				},
-				{
-					"title": "服务管理",
-					"icon": "&#xe857;",
-					"href": "/service/rms/service_manage",
-					"spread": false
-				}
-			]
+			"spread": false
+		},
+		{
+			"title": "案例仓库",
+			"icon": "&#xe615;",
+			"href": "",
+			"spread": false
+		},
+		{
+			"title": "客户信息",
+			"icon": "&#xe62a;",
+			"href": "",
+			"spread": false
 		},
 		{
 			"title": "系统设置",
@@ -99,13 +45,13 @@
 			"spread": false,
 			"children": [
 				{
-					"title": "用户列表",
+					"title": "用户管理",
 					"icon": "&#xe770;",
 					"href": "/user/user_manage_view/verify",
 					"spread": false
 				},
 				{
-					"title": "参数配置",
+					"title": "网站配置",
 					"icon": "&#xe631;",
 					"href": "/conf/conf_manage_view/verify",
 					"spread": false

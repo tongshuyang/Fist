@@ -22,6 +22,15 @@ public interface WebConfigMapper {
     List<WebConfig> listConf(WebConfig webConfig);
 
     /**
+     * 获取网站公共配置列表
+     *
+     * @return java.util.List<cn.litman.fist.entity.WebConfig>
+     * @author SoyungTong
+     * @date 2021/5/2 17:06
+     */
+    List<WebConfig> listPubConf();
+
+    /**
      * 修改网站配置
      *
      * @param webConfig 网站配置实体类

@@ -27,4 +27,9 @@ public interface Constant {
      */
     String DOMAIN = "http://127.0.0.1/";
 
+    /**
+     * 图片上传路径
+     */
+    String IMG_UPLOAD_PATH = "/img/";
+
 }

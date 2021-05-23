@@ -8,10 +8,10 @@
 <form class="layui-form layui-row changePwd">
 	<div class="layui-col-xs12 layui-col-sm6 layui-col-md6">
 		<div class="layui-form-item">
-			<label><input name="id" type="number" value="${adminUser.id}" disabled class="layui-input layui-hide"></label>
+			<label><input name="id" type="number" value="${user.id}" disabled class="layui-input layui-hide"></label>
 			<label class="layui-form-label">用户名</label>
 			<div class="layui-input-block">
-				<label><input type="text" value="${adminUser.username}" disabled class="layui-input layui-disabled"></label>
+				<label><input type="text" value="${user.username}" disabled class="layui-input layui-disabled"></label>
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -41,6 +41,6 @@
 	</div>
 </form>
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/mine/rms/js/alt_pwd.js"></script>
+<script type="text/javascript" src="/static/mine/js/alt_pwd.js"></script>
 </body>
 </html>

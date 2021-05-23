@@ -47,7 +47,7 @@ public class WebConfigController {
      * @date 2021/5/2 16:53
      */
     @ResponseBody
-    @GetMapping("/list_conf")
+    @GetMapping("/list_conf/verify")
     public PageMsg listConf(WebConfig webConfig, Integer page, Integer limit){
         return webConfigService.listConf(webConfig,page,limit);
     }

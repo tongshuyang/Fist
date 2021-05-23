@@ -6,7 +6,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function() {
     //表单提交
     form.on('submit(altPwd)',function(data){
         layer.load(2);
-        $.post("/admin_user/rms/alt_pwd",data.field,function(res){
+        $.post("/user/alt_pwd/verify",data.field,function(res){
             layer.closeAll('loading');
             if(res.rs){
                 layer.alert(res.info, {
@@ -14,7 +14,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function() {
                     ,closeBtn: 0
                     ,anim: 4 //动画类型
                 }, function(){
-                    top.location.href = "/admin_user/sign_in"
+                    top.location.href = "/"
                 });
             }else{
                 layer.msg(res.info, {time: 2000});

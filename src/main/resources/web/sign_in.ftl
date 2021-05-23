@@ -2,7 +2,7 @@
 <html lang="en" class="loginHtml">
 <head>
     <#include "head.ftl">
-    <title>后台登入-${conf.siteName!}</title>
+    <title>登入-${conf.siteName!}</title>
 </head>
 <body class="loginBody">
 <form class="layui-form">

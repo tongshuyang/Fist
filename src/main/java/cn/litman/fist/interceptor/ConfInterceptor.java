@@ -29,9 +29,7 @@ public class ConfInterceptor implements HandlerInterceptor {
         //加载网站配置信息
         if(application.getAttribute(Constant.CONF_SESSION) == null){
             //查询公开的conf信息
-            WebConfig config = new WebConfig();
-            config.setIsPrivate(0);
-            List<WebConfig> webConfigs = webConfigMapper.listConf(config);
+            List<WebConfig> webConfigs = webConfigMapper.listPubConf();
             //放入application中
             Map<String,String> conf = new HashMap<>(20);
             for (WebConfig webConfig:webConfigs
