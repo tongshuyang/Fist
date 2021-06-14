@@ -87,5 +87,6 @@
       </if>
     </trim>
   </insert>
+  <select id="listCustomer" resultType="cn.litman.fist.entity.Customer"></select>
   <update id="updateCustomer"></update>
 </mapper>
