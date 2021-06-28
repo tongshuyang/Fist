@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.litman.fist.mapper.CaseMapper">
   <resultMap id="BaseResultMap" type="cn.litman.fist.entity.Case">
-    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+    <result column="id" jdbcType="INTEGER" property="id" />
     <result column="u_id" jdbcType="INTEGER" property="uId" />
     <result column="c_id" jdbcType="INTEGER" property="cId" />
     <result column="story_id" jdbcType="INTEGER" property="storyId" />
@@ -18,12 +18,12 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <insert id="insert" parameterType="cn.litman.fist.entity.Case">
-    insert into case (case_id, u_id, c_id, 
+    insert into case (id, u_id, c_id, 
       story_id, title, description, 
       error_code, category, status, 
       product_type, follow_info, solution, 
       create_time, update_time)
-    values (#{caseId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{cId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{cId,jdbcType=INTEGER}, 
       #{storyId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{errorCode,jdbcType=VARCHAR}, #{category,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
       #{productType,jdbcType=TINYINT}, #{followInfo,jdbcType=VARCHAR}, #{solution,jdbcType=VARCHAR}, 
@@ -32,8 +32,8 @@
   <insert id="insertSelective" parameterType="cn.litman.fist.entity.Case">
     insert into case
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="caseId != null">
-        case_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="uId != null">
         u_id,
@@ -76,8 +76,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="caseId != null">
-        #{caseId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="uId != null">
         #{uId,jdbcType=INTEGER},
