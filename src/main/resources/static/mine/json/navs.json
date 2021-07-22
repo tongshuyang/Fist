@@ -15,7 +15,7 @@
 		{
 			"title": "客户信息",
 			"icon": "&#xe62a;",
-			"href": "",
+			"href": "/customer/customer_manage_view/verify",
 			"spread": false
 		}
 	],
@@ -29,13 +29,13 @@
 		{
 			"title": "案例仓库",
 			"icon": "&#xe615;",
-			"href": "",
+			"href": "/case_manage_view/verify",
 			"spread": false
 		},
 		{
 			"title": "客户信息",
 			"icon": "&#xe62a;",
-			"href": "",
+			"href": "/customer/customer_manage_view/verify",
 			"spread": false
 		},
 		{

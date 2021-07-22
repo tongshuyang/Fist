@@ -59,6 +59,7 @@ public class AliOSS {
      * @date 2021/5/20 0:38
      */
     public static String fileUpload(@NotNull MultipartFile file, String path) throws Exception {
+        new AliOSS();
         //判断文件大小是否超出上传限制
         if (file.getSize() > maxUpload) {
             throw new Exception("上传文件大小不能超过" + CONF.get("maxUpload") + "MB！");

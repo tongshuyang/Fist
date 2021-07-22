@@ -14,12 +14,10 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+  <!--  添加客户信息-->
   <insert id="insertCustomer" parameterType="cn.litman.fist.entity.Customer">
-    insert into customer
+    INSERT INTO customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="companyName != null">
         company_name,
       </if>
@@ -44,17 +42,8 @@
       <if test="buttProgress != null">
         butt_progress,
       </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="companyName != null">
         #{companyName,jdbcType=VARCHAR},
       </if>
@@ -79,14 +68,49 @@
       <if test="buttProgress != null">
         #{buttProgress,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
     </trim>
   </insert>
-  <select id="listCustomer" resultType="cn.litman.fist.entity.Customer"></select>
-  <update id="updateCustomer"></update>
+  <!--  查询客户列表-->
+  <select id="listCustomer" resultType="cn.litman.fist.entity.Customer">
+    SELECT *
+    FROM customer
+    WHERE 1=1
+    <if test="id != null and id != ''">
+      AND id = #{id,jdbcType=INTEGER}),
+    </if>
+    <if test="companyName != null and companyName != ''">
+      AND company_name LIKE CONCAT(CONCAT('%', #{companyName,jdbcType=VARCHAR}), '%')
+    </if>
+  </select>
+  <!--  修改客户信息-->
+  <update id="updateCustomer">
+    UPDATE customer
+    SET
+    <trim suffixOverrides=",">
+      <if test="companyName != null and companyName != ''">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleName != null and saleName != ''">
+        sale_name = #{saleName,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null and area != ''">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="level != null and level != ''">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="isSigned != null and isSigned != ''">
+        is_signed = #{isSigned,jdbcType=INTEGER},
+      </if>
+      <if test="companyDetail != null and companyDetail != ''">
+        company_detail = #{companyDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="buttType != null and buttType != ''">
+        butt_type = #{buttType,jdbcType=VARCHAR},
+      </if>
+      <if test="buttProgress != null and buttProgress != ''">
+        butt_progress = #{buttProgress,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </update>
 </mapper>

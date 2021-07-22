@@ -15,7 +15,7 @@ import java.util.Date;
 @Setter
 public class Customer {
     /**
-    *顾客id
+    *客户ID
     */
     private Integer id;
 
@@ -30,17 +30,17 @@ public class Customer {
     private String saleName;
 
     /**
-     *所属区域
+     *所属区域 0：未分类 1：华东 2：华南 3：华北
      */
     private Byte area;
 
     /**
-     *规模等级
+     *客户等级 0：小体量 1：中等 2：重要 3：非常重要
      */
     private Byte level;
 
     /**
-     *是否签约
+     *已签约 ？0：未签约 1：已签约 2：待续签 3：待回款 4：未续签
      */
     private Byte isSigned;
 
@@ -55,12 +55,12 @@ public class Customer {
     private String buttType;
 
     /**
-     *对接进度
+     *对接进度 0:了解产品 1：首次对接中 2：对接完成 3：升级版本
      */
     private Byte buttProgress;
 
     /**
-     *添加时间
+     *创建时间
      */
     private Date createTime;
 
