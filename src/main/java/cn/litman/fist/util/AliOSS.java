@@ -1,16 +1,17 @@
 package cn.litman.fist.util;
 
-import cn.litman.fist.entity.WebConfig;
-import cn.litman.fist.mapper.WebConfigMapper;
+import cn.litman.fist.entity.AliOSSConf;
+import cn.litman.fist.service.WebConfigService;
+import cn.litman.fist.service.impl.WebConfigServiceImpl;
 import com.aliyun.oss.ClientBuilderConfiguration;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -18,37 +19,10 @@ import java.util.Random;
  * @email litman@126.com
  * @date 2021/5/3 16:23
  */
-public class AliOSS {
+@Service
+public class AliOSS implements AliOSSService{
     @Autowired
-    private WebConfigMapper webConfigMapper;
-
-    private static final Map<String,String> CONF = new HashMap<>(20);
-
-    private static String endpoint = "";
-    private static String accessKeyId = "";
-    private static String accessKeySecret = "";
-    private static String bucketName = "";
-    private static int maxUpload = 10 * 1024 * 1024;
-
-    {
-        List<WebConfig> webConfigs = webConfigMapper.listConf(new WebConfig());
-        for (WebConfig webConfig:webConfigs
-        ) {
-            CONF.put(webConfig.getKey(),webConfig.getValue());
-        }
-        endpoint = CONF.get("endpoint");
-        accessKeyId = CONF.get("accessKeyId");
-        accessKeySecret = CONF.get("accessKeySecret");
-        bucketName = CONF.get("bucketName");
-        maxUpload = Integer.parseInt(CONF.get("maxUpload")) * 1024 * 1024;
-    }
-//    private static final String ENDPOINT = conf.get("endpoint");
-//    private static final String ACCESS_KEY_ID = conf.get("accessKeyId");
-//    private static final String ACCESS_KEY_SECRET = conf.get("accessKeySecret");
-//    private static final String BUCKET_NAME = conf.get("bucketName");
-//    private static final String KEY = "";
-//    private static final Integer MAX_UPLOAD = 5 * 1024 * 1024;
-
+    private WebConfigService webConfigService;
     /**
      * 阿里云上传文件
      *
@@ -58,11 +32,12 @@ public class AliOSS {
      * @author SoyungTong
      * @date 2021/5/20 0:38
      */
-    public static String fileUpload(@NotNull MultipartFile file, String path) throws Exception {
-        new AliOSS();
+    @Override
+    public String fileUpload(@NotNull MultipartFile file, String path) throws Exception {
+        AliOSSConf aliConf = webConfigService.getAliConf();
         //判断文件大小是否超出上传限制
-        if (file.getSize() > maxUpload) {
-            throw new Exception("上传文件大小不能超过" + CONF.get("maxUpload") + "MB！");
+        if (file.getSize() > aliConf.getMaxUpload()) {
+            throw new Exception("上传文件大小不能超过" + aliConf.getMaxUpload() + "MB！");
         }
         //获取文件名
         String originalFilename = file.getOriginalFilename();
@@ -82,10 +57,10 @@ public class AliOSS {
         conf.setSupportCname(true);
 
         //生成 cos 客户端
-        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret, conf);
+        OSS ossClient = new OSSClientBuilder().build(aliConf.getEndpoint(), aliConf.getAccessKeyId(), aliConf.getAccessKeySecret(), conf);
 
         //上传文件到OSS
-        ossClient.putObject(bucketName, objectName, file.getInputStream());
+        ossClient.putObject(aliConf.getBucketName(), objectName, file.getInputStream());
 
         // 关闭OSSClient。
         ossClient.shutdown();

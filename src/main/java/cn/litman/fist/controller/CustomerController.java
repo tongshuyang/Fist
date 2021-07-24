@@ -1,10 +1,11 @@
 package cn.litman.fist.controller;
 
+import cn.litman.fist.common.Constant;
 import cn.litman.fist.common.PageMsg;
 import cn.litman.fist.common.ReturnMsg;
 import cn.litman.fist.entity.Customer;
 import cn.litman.fist.service.CustomerService;
-import cn.litman.fist.util.AliOSS;
+import cn.litman.fist.util.AliOSSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author SoyungTong
@@ -23,6 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private AliOSSService aliOSSService;
 
     /**
      * 返回客户信息管理页面
@@ -72,8 +77,11 @@ public class CustomerController {
      */
     @ResponseBody
     @PostMapping("/upload_edit_img/verify")
-    public ReturnMsg uploadEditImg(MultipartFile file) throws Exception{
-        return new ReturnMsg(true,"上传成功", AliOSS.fileUpload(file,"/img/edit/"));
+    public PageMsg uploadEditImg(MultipartFile file) throws Exception{
+        Map<String,Object> map = new HashMap<>(3);
+        map.put("src", Constant.ENDPOINT + aliOSSService.fileUpload(file,Constant.IMG_UPLOAD_PATH));
+        map.put("title","Edit Img");
+        return new PageMsg(0L, map);
     }
     /**
      * 查询客户信息

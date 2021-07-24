@@ -2,6 +2,7 @@ package cn.litman.fist.service;
 
 import cn.litman.fist.common.PageMsg;
 import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.AliOSSConf;
 import cn.litman.fist.entity.WebConfig;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,6 @@ import java.util.List;
  * @email litman@126.com
  * @date 2021/5/2 17:02
  */
-@Service
 public interface WebConfigService {
 
     /**
@@ -38,4 +38,13 @@ public interface WebConfigService {
      * @date 2021/5/2 17:02
      */
     ReturnMsg altConf(WebConfig webConfig, HttpServletRequest request);
+
+    /**
+     * 获取阿里OSS配置
+     *
+     * @return cn.litman.fist.entity.AliOSSConf
+     * @author SoyungTong
+     * @date 2021/7/24 17:13
+     */
+    AliOSSConf getAliConf();
 }

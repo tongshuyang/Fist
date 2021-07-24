@@ -25,11 +25,11 @@ public interface Constant {
     /**
      * 本站网址
      */
-    String DOMAIN = "http://127.0.0.1/";
+    String ENDPOINT = "https://oss-fist.litman.cn/";
 
     /**
      * 图片上传路径
      */
-    String IMG_UPLOAD_PATH = "/img/";
+    String IMG_UPLOAD_PATH = "img/edit/";
 
 }

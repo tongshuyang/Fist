@@ -3,6 +3,7 @@ package cn.litman.fist.service.impl;
 import cn.litman.fist.common.Constant;
 import cn.litman.fist.common.PageMsg;
 import cn.litman.fist.common.ReturnMsg;
+import cn.litman.fist.entity.AliOSSConf;
 import cn.litman.fist.entity.WebConfig;
 import cn.litman.fist.mapper.WebConfigMapper;
 import cn.litman.fist.service.WebConfigService;
@@ -12,7 +13,9 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 网站配置服务实现类
@@ -41,5 +44,26 @@ public class WebConfigServiceImpl implements WebConfigService {
             return ReturnMsg.SUCCESS;
         }
         return ReturnMsg.FAIL;
+    }
+
+    @Override
+    public AliOSSConf getAliConf() {
+        //查询OSS配置，放入集合，方便查询使用
+        Map<String,String> conf = new HashMap<>(20);
+        List<WebConfig> webConfigs = webConfigMapper.listPubConf();
+        for (WebConfig webConfig:webConfigs
+        ) {
+            conf.put(webConfig.getKey(),webConfig.getValue());
+        }
+
+        //从集合中获取对应值赋值给AliOSSConf
+        AliOSSConf aliConf = new AliOSSConf();
+        aliConf.setEndpoint(conf.get("endpoint"));
+        aliConf.setAccessKeyId(conf.get("accessKeyId"));
+        aliConf.setAccessKeySecret(conf.get("accessKeySecret"));
+        aliConf.setBucketName(conf.get("bucketName"));
+        aliConf.setMaxUpload(Integer.parseInt(conf.get("maxUpload")) * 1024 * 1024);
+
+        return  aliConf;
     }
 }

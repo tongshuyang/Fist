@@ -33,7 +33,5 @@
   <select id="listPubConf" resultType="cn.litman.fist.entity.WebConfig">
     SELECT *
     FROM web_config
-    WHERE
-    is_private = 0
   </select>
 </mapper>
