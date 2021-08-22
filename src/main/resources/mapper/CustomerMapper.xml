@@ -71,15 +71,24 @@
     </trim>
   </insert>
   <!--  查询客户列表-->
-  <select id="listCustomer" resultType="cn.litman.fist.entity.Customer">
+  <select id="listCustomer" resultMap="BaseResultMap">
     SELECT *
     FROM customer
     WHERE 1=1
     <if test="id != null and id != ''">
       AND id = #{id,jdbcType=INTEGER}),
     </if>
+    <if test="area != null and area != ''">
+      AND area = #{area,jdbcType=INTEGER}),
+    </if>
+    <if test="level != null and level != ''">
+      AND level = #{level,jdbcType=INTEGER}),
+    </if>
     <if test="companyName != null and companyName != ''">
       AND company_name LIKE CONCAT(CONCAT('%', #{companyName,jdbcType=VARCHAR}), '%')
+    </if>
+    <if test="saleName != null and saleName != ''">
+      AND sale_name LIKE CONCAT(CONCAT('%', #{saleName,jdbcType=VARCHAR}), '%')
     </if>
   </select>
   <!--  修改客户信息-->

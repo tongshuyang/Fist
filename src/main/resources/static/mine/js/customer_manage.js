@@ -14,12 +14,12 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
         id: "customerListTable",
         page: true,
         cols: [[
-            {field: 'id', title: '客户ID', align: "center", minWidth: 50},
-            {field: 'companyName', title: '公司名称', align: 'center', minWidth: 100},
-            {field: 'saleName', title: '所属销售', align: 'center', minWidth: 60},
+            {field: 'id', title: '客户ID', align: "center", width: 90},
+            {field: 'companyName', title: '公司名称', align: 'center', minWidth: 150},
+            {field: 'saleName', title: '所属销售', align: 'center', width: 90},
             {
-                field: 'area', title: '所属区域', align: 'center', minWidth: 60, templet: function (d) {
-                    switch (d.level) {
+                field: 'area', title: '所属区域', align: 'center', width: 90, templet: function (d) {
+                    switch (d.area) {
                         case 0:
                             return "未分类";
                         case 1:
@@ -32,7 +32,7 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
                 }
             },
             {
-                field: 'level', title: '客户等级', align: 'center', minWidth: 60, templet: function (d) {
+                field: 'level', title: '客户等级', align: 'center', width: 90, templet: function (d) {
                     switch (d.level) {
                         case 0:
                             return "小体量";
@@ -46,8 +46,8 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
                 }
             },
             {
-                field: 'isSigned', title: '签约状态', align: 'center', minWidth: 60, templet: function (d) {
-                    switch (d.level) {
+                field: 'isSigned', title: '签约状态', align: 'center', width: 90, templet: function (d) {
+                    switch (d.isSigned) {
                         case 0:
                             return "未签约";
                         case 1:
@@ -65,7 +65,7 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
             {field: 'buttType', title: '对接方式', hide: true},
             {field: 'buttProgress', title: '对接进度', hide: true},
             {
-                field: 'createTime', title: '添加时间', align: 'center', minWidth: 100, templet: function (d) {
+                field: 'createTime', title: '添加时间', align: 'center', width: 160, templet: function (d) {
                     {
                         {
                             return util.toDateString(d.createTime, 'yyyy-MM-dd HH:mm:ss')
@@ -74,7 +74,7 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
                 }
             },
             {
-                field: 'updateTime', title: '更新时间', align: 'center', minWidth: 100, templet: function (d) {
+                field: 'updateTime', title: '更新时间', align: 'center', width: 160, templet: function (d) {
                     {
                         {
                             return util.toDateString(d.updateTime, 'yyyy-MM-dd HH:mm:ss')
@@ -82,7 +82,7 @@ layui.use(['form', 'layer', 'table', 'util'], function () {
                     }
                 }
             },
-            {title: '操作', templet: '#customerListBar', fixed: "right", align: "center", width: 120}
+            {title: '操作', templet: '#customerListBar', fixed: "right", align: "center", width: 160}
         ]]
     });
 

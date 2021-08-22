@@ -14,11 +14,11 @@ layui.use(['layer','table','laytpl','util'],function(){
         id : "confListTable",
         page : true,
         cols : [[
-            {field: 'id', title: 'ID', align:"center",Width:60},
-            {field: 'key', title: '键', align:'center',Width:100},
+            {field: 'id', title: 'ID', align:"center",width:60},
+            {field: 'key', title: '键', align:'center',width:100},
             {field: 'value', title: '值', align:'center',minWidth:200},
             {field: 'remark', title: '备注', align:'center',minWidth:200},
-            {field: 'updateTime', title: '修改时间', align:'center',Width:170,templet:function(d){
+            {field: 'updateTime', title: '修改时间', align:'center',width:170,templet:function(d){
                     {{ return util.toDateString(d.updateTime, 'yyyy-MM-dd HH:mm:ss')}}
                 }},
             {title: '操作', templet:'#confListBar',fixed:"right",align:"center",width:80}
